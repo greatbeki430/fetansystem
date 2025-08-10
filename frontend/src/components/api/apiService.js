@@ -1,7 +1,6 @@
-
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/tasks";
+const API_URL = "https://task-manage-app-ogd7.onrender.com/api/tasks";
 
 // Set up axios instance with auth token
 const api = axios.create({
@@ -19,20 +18,36 @@ api.interceptors.request.use(config => {
 
 export const fetchTasks = async (status, page = 1, limit = 3, search = "") => {
   try {
+    // const response = await api.get("/", {
+    //   params: {
+    //     status,
+    //     page,
+    //     limit,
+    //     search,
+    //   },
+    // });
     const response = await api.get("/", {
       params: {
-        status,
+        status: status.replace(" ", "_"), // Convert "in progress" to "in_progress"
         page,
         limit,
         search,
       },
     });
-    return {
-      tasks: response.data.tasks || response.data,
-      total: response.data.total || response.data.length,
-    };
+
+    // Handle standardized response
+    // ⚠️ Potential Improvement Needed:
+    if (response.data.success !== false) {
+      // More resilient check
+      return {
+        tasks: response.data.tasks || [], // Default empty array
+        total: response.data.total || 0, // Default 0
+      };
+    }
+    throw new Error(response.data.message || "Failed to fetch tasks");
   } catch (error) {
     console.error("Error fetching tasks:", error);
+    console.error("API Error:", error.response?.data || error.message);
     throw error;
   }
 };

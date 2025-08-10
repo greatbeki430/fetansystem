@@ -180,7 +180,8 @@
   white-space: nowrap;
 }
 
-.profile-image, .profile-initial {
+.profile-image,
+.profile-initial {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -265,6 +266,13 @@
   display: inline-block;
   margin-top: 0.6rem;
   margin-right: 1rem;
+}
+/* .dashboard-title span{
+  color: #ec4c7d;
+} */
+
+.highlight {
+  color: #ec4c7d;
 }
 
 .add-new-btn {
@@ -654,7 +662,7 @@
 }
 
 .db-notification.success {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 
 .db-notification.error {
@@ -662,7 +670,7 @@
 }
 
 .db-notification.info {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 @keyframes slideInRight {
@@ -688,13 +696,12 @@
   }
 }
 
-
 /* Success Notification */
 .db-success-notification {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 1rem 1.5rem;
   border-radius: 4px;
@@ -707,7 +714,7 @@
 }
 
 .db-success-notification.success {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 
 .db-success-notification.error {
@@ -797,11 +804,11 @@
   .main-content {
     padding: 0.5rem 2rem;
   }
-  
+
   .tasks-header {
     padding: 1rem;
   }
-  
+
   .user-section {
     margin-right: 1rem;
   }
@@ -811,12 +818,12 @@
   .db-modal-input-group {
     flex-direction: column;
   }
-  
+
   .db-modal-input,
   .db-confirm-delete-btn {
     width: 100%;
   }
-  
+
   .db-confirm-delete-btn {
     padding: 0.75rem;
   }

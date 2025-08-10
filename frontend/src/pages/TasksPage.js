@@ -47,7 +47,7 @@ const TasksPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.patch(
-        `http://localhost:5000/api/tasks/${currentTask._id}`,
+        `https://task-manage-app-ogd7.onrender.com/api/tasks/${currentTask._id}`,
         {
           name: editTaskName,
           status: editTaskStatus,
@@ -76,9 +76,12 @@ const TasksPage = () => {
       return;
     }
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/me", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://task-manage-app-ogd7.onrender.com/api/auth/me",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setUserName(response.data.name || "Unknown User");
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -106,7 +109,7 @@ const TasksPage = () => {
       console.log("Attempting to create task:", taskName);
 
       const response = await axios.post(
-        "http://localhost:5000/api/tasks",
+        "https://task-manage-app-ogd7.onrender.com/api/tasks",
         { name: taskName },
         {
           headers: {
@@ -152,10 +155,13 @@ const TasksPage = () => {
       return;
     }
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks", {
-        headers: { Authorization: `Bearer ${token}` },
-        params: { search },
-      });
+      const response = await axios.get(
+        "https://task-manage-app-ogd7.onrender.com/api/tasks",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          params: { search },
+        }
+      );
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -170,7 +176,7 @@ const TasksPage = () => {
       const newStatus = task.status === "completed" ? "pending" : "completed";
 
       await axios.patch(
-        `http://localhost:5000/api/tasks/${taskId}`,
+        `https://task-manage-app-ogd7.onrender.com/api/tasks/${taskId}`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -186,9 +192,12 @@ const TasksPage = () => {
   const handleDeleteTask = async taskId => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://task-manage-app-ogd7.onrender.com/api/tasks/${taskId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setTasks(tasks.filter(t => t._id !== taskId));
     } catch (error) {
       console.error("Error deleting task:", error);

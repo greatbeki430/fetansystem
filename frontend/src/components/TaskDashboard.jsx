@@ -84,9 +84,12 @@ const TaskDashboard = () => {
         return;
       }
       try {
-        const response = await fetch("http://localhost:5000/api/auth/profile", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await fetch(
+          "https://task-manage-app-ogd7.onrender.com/api/auth/profile",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setUserName(data.name || "Unknown User");
@@ -218,7 +221,7 @@ const TaskDashboard = () => {
       const token = localStorage.getItem("token");
       // First get basic user info
       const userResponse = await fetch(
-        "http://localhost:5000/api/auth/profile",
+        "https://task-manage-app-ogd7.onrender.com/api/auth/profile",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -230,7 +233,7 @@ const TaskDashboard = () => {
 
         // Then get full profile with picture if available
         const profileResponse = await fetch(
-          "http://localhost:5000/api/user/profile",
+          "https://task-manage-app-ogd7.onrender.com/api/user/profile",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -249,7 +252,7 @@ const TaskDashboard = () => {
             name: userData.name,
             email: userData.email,
             previewImage: userData.profilePicture
-              ? `http://localhost:5000${userData.profilePicture}`
+              ? `https://task-manage-app-ogd7.onrender.com${userData.profilePicture}`
               : "",
           });
         }
@@ -271,14 +274,17 @@ const TaskDashboard = () => {
         formData.append("profilePicture", profileData.profilePicture);
       }
 
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          // Don't set Content-Type header for FormData - browser will set it automatically
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        "https://task-manage-app-ogd7.onrender.com/api/auth/profile",
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            // Don't set Content-Type header for FormData - browser will set it automatically
+          },
+          body: formData,
+        }
+      );
 
       const data = await response.json(); // Always parse JSON first
 
@@ -375,7 +381,8 @@ const TaskDashboard = () => {
         </div>
         <div className="dashboard-header">
           <h1 className="dashboard-title">
-            You've got {totalTasks} tasks today
+            You've got <span className="highlight">{totalTasks} Tasks</span>{" "}
+            today
           </h1>
           <button
             className="add-new-btn"

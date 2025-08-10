@@ -26,12 +26,25 @@ exports.createTask = async (req, res) => {
 };
 
 exports.getTasks = async (req, res) => {
+  // Add these logs:
+  console.log("Query parameters:", {
+    page: req.query.page,
+    limit: req.query.limit,
+    search: req.query.search,
+    status: req.query.status,
+  });
   const { page = 1, limit = 3, search = "", status } = req.query; // Added status
   const query = {
     user: req.user._id, // Use _id from auth middleware
   };
+  // Add this log after building the query:
+  console.log("Final query:", query);
   if (search) query.name = { $regex: search, $options: "i" };
-  if (status) query.status = status.split(",");
+  // if (status) query.status = status.split(",");
+  if (status) {
+    const statuses = status.split(",");
+    query.status = { $in: statuses }; // Changed to $in operator
+  }
 
   try {
     const tasks = await Task.find(query)
@@ -39,10 +52,23 @@ exports.getTasks = async (req, res) => {
       .skip((page - 1) * limit)
       .sort({ createdAt: -1 }); // Sort by newest first
     const total = await Task.countDocuments(query);
-    res.json({ tasks, total });
+    // res.json({ tasks, total });
+    // Ensure consistent response format
+    res.json({
+      success: true,
+      tasks,
+      total,
+      page: Number(page),
+      limit: Number(limit),
+    });
   } catch (err) {
     console.error("Error fetching tasks:", err);
-    res.status(500).json({ message: err.message });
+    // res.status(500).json({ message: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 

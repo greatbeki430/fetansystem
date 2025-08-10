@@ -20,7 +20,8 @@ const auth = (req, res, next) => {
     // Make sure we're attaching the user ID correctly
     req.user = {
       _id: decoded.userId, // Ensure this matches your JWT payload structure
-      ...decoded,
+      // ...decoded,
+      userId: decoded.userId, // Add this for compatibility
     };
 
     next();
