@@ -1,0 +1,234 @@
+.signup-container {
+  background: linear-gradient(135deg, #87ceeb, #e0f6ff);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
+.signup-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23E0F6FF" fill-opacity="0.7" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,106.7C960,128,1056,160,1152,176C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+  background-size: cover;
+  z-index: -1;
+}
+
+.signup-box {
+  padding: 1.5rem;
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form sections */
+.logo-section {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: none;
+  margin-bottom: 1.5rem;
+}
+
+.form-section {
+  flex: none;
+  padding: 0;
+}
+
+/* Text elements */
+.welcome-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.info-text {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Form styling */
+.signup-form {
+  margin-bottom: 0.2rem;
+}
+
+/* Base input wrapper style */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 95%;
+  margin: 0 0 0.3rem 0; /* Only bottom margin, slight for breathing space */
+}
+
+/* Tight spacing for all field pairs */
+/* .input-wrapper:nth-of-type(1) { Name field
+  margin-bottom: 0.01rem; Tight spacing above Email
+}
+
+.input-wrapper:nth-of-type(2) { Email field
+  margin-top: 0.01rem; Tight spacing below Name
+  margin-bottom: 0.01rem; Tight spacing above Password
+}
+
+.input-wrapper:nth-of-type(3) { Password field
+  margin-top: 0.01rem; Tight spacing below Email
+  margin-bottom: 0.01rem; Tight spacing above show-password
+}
+
+.input-wrapper:nth-of-type(4) { Confirm password
+  margin-top: 0.01rem; Tight spacing below show-password
+} */
+
+/* .input-wrapper:nth-of-type(1),
+.input-wrapper:nth-of-type(2),
+.input-wrapper:nth-of-type(3),
+.input-wrapper:nth-of-type(4) {
+  margin-top: 0;
+  margin-bottom: 0.01rem; 
+} */
+
+.show-password {
+  /* margin: 0.01rem 0;  */
+  /* Ultra-tight vertical spacing */
+  margin: 0;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Input field styles */
+.input-container {
+  position: relative;
+  min-height: 2.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  background: rgba(240, 240, 240, 0.9);
+  backdrop-filter: blur(2px);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #ec4c7d;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 2px rgba(236, 76, 125, 0.3);
+}
+
+.floating-label {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #999;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus + .floating-label,
+.input-field.has-value + .floating-label {
+  top: 0;
+  transform: translateY(-50%) scale(0.85);
+  font-size: 0.75rem;
+  color: #ec4c7d;
+}
+
+.options-row {
+  padding-top: 0;
+  margin: 0.3rem 0 0.2rem 0; /* Negative top margin pulls it up */
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Remove margin from the confirm password wrapper */
+.input-wrapper:nth-of-type(4) {
+  margin-bottom: 0;
+}
+
+.signup-btn {
+  background-color: #ec4c7d;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.signup-btn:hover {
+  background-color: #d93b6c;
+}
+/* Adjust the signup button wrapper spacing */
+.signup-btn-wrapper {
+  margin-top: 1rem;  /* Add more space above button */
+}
+
+.error {
+  margin: 0.1rem 0 0.2rem 0;
+  height: auto;
+  font-size: 0.7rem;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.login-link span {
+  /* color: #1e90ff; */
+  cursor: pointer;
+  color: black;
+  text-decoration: underline;
+  font-weight:600;
+}
+
+/* Responsive adjustments */
+@media (min-width: 601px) {
+  .signup-box {
+    flex-direction: row;
+  }
+  .logo-section {
+    flex: 0.4;
+    border-right: 1px solid #ccc;
+    padding-right: 1.5rem;
+    margin-bottom: 0;
+  }
+  .form-section {
+    flex: 0.6;
+    padding-left: 1.5rem;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo-section {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 1rem;
+  }
+}
