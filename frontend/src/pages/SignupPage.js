@@ -71,7 +71,7 @@ const SignupPage = () => {
         );
         console.log(response.data);
         alert("Signup successful! Please log in.");
-        navigate("/");
+        navigate("/login");
       } catch (err) {
         const errorMessage =
           err.response?.data?.message || "Server error occurred.";

@@ -38,6 +38,13 @@ app.use((req, res, next) => {
   // console.log("Body:", req.body);
   next();
 });
+// Serve static files from React build folder
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// Handle client-side routing - return index.html for all routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));

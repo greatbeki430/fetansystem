@@ -56,6 +56,7 @@ const LoginPage = () => {
   };
 
   const handleSignupRedirect = () => {
+    e.preventDefault(); // Prevent default anchor behavior
     navigate("/signup"); // Use navigate for internal routing to signup page
   };
 
