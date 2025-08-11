@@ -194,7 +194,7 @@
   color: #666;
   margin-top: 0.75rem;
 }
-.signup-link a {
+.signup-link span {
    cursor: pointer;
   color: black;
   text-decoration: underline;

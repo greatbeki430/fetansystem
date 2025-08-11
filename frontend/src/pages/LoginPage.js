@@ -144,7 +144,7 @@ const LoginPage = () => {
               className="signup-link"
               onClick={handleSignupRedirect}
             >
-              Sign up
+              <span>Sign up</span>
             </a>
           </p>
         </div>
