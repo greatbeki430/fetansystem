@@ -194,6 +194,12 @@
   color: #666;
   margin-top: 0.75rem;
 }
+.signup-link a {
+   cursor: pointer;
+  color: black;
+  text-decoration: underline;
+  font-weight:600;
+}
 
 .signup-link {
   color: #1e90ff;
